@@ -34,7 +34,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
     
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json));
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
     
     if (!empty($message)) {
         $result = curl_exec($ch);
