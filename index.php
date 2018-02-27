@@ -12,3 +12,31 @@ if (isset($_GET['hub_verify_token'])) {
         return;
     }
 }
+
+$input = json_decode(file_get_contents('php://input'), true);
+
+if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
+    $sender = $input['entry'][0]['messaging'][0]['sender']['id'];
+    $message = $input['entry'][0]['messaging'][0]['message']['text'];
+    
+    $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='.$access_token;
+    
+    $ch = curl+init($url);
+    
+    $jsonData = '{
+        "recipient":{
+            "id":"'.$sender.'"
+        },
+        "message":{
+            "text":"OK"
+        }
+    }';
+    
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json));
+    
+    if (!empty($message)) {
+        $result = curl_exec($ch);
+    }
+}
