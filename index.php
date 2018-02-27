@@ -21,7 +21,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
     
     $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='.$access_token;
     
-    $ch = curl+init($url);
+    $ch = curl_init($url);
     
     $jsonData = '{
         "recipient":{
