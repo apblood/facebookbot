@@ -12,7 +12,7 @@ if (isset($_GET['hub_verify_token'])) {
         return;
     }
 }
-
+$jj = file_get_contents('php://input');
 $input = json_decode(file_get_contents('php://input'), true);
 
 if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
@@ -28,7 +28,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
             "id":"'.$sender.'"
         },
         "message":{
-            "text":"OK--Your FB_ID is:'.$sender.'"
+            "text":"OK--Your FB_ID is:'.$sender.'--.'$jj'."
         }
     }';
     
