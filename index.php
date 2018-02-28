@@ -28,7 +28,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
             "id":"'.$sender.'"
         },
         "message":{
-            "text":"OK--Your FB_ID is:'.$jj.'"
+            "text":"'.$jj.'"
         }
     }';
     
