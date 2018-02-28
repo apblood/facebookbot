@@ -14,7 +14,6 @@ if (isset($_GET['hub_verify_token'])) {
 }
 
 $input = json_decode(file_get_contents('php://input'), true);
-$jj = json_encode($input);
 
 if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
     $sender = $input['entry'][0]['messaging'][0]['sender']['id'];
@@ -29,7 +28,7 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
             "id":"'.$sender.'"
         },
         "message":{
-            "text":"'.$jj.'"
+            "text":"OK--your facebook user id is: '.$sender.'"
         }
     }';
     
