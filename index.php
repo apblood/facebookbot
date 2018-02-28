@@ -23,14 +23,12 @@ if (isset($input['entry'][0]['messaging'][0]['sender']['id'])) {
     
     $ch = curl_init($url);
     
-    $msg = "OK--Your FB_ID is:" . $sender;
-    
     $jsonData = '{
         "recipient":{
             "id":"'.$sender.'"
         },
         "message":{
-            "text":$msg
+            "text":"OK--Your FB_ID is:'.$sender.'"
         }
     }';
     
